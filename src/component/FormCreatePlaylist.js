@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { Button, Form } from 'react-bootstrap'
+import { addItems, postPlaylist } from '../utils/api'
 import { useDispatch, useSelector } from 'react-redux'
 import { tracksAction } from '../store/tracks-slice'
-import { addItems, postPlaylist } from '../utils/api'
 
-function FomCreatePlaylist() {
+function FormCreatePlaylist() {
   const [validated, setValidated] = useState(false)
   const [title, setTitle] = useState('')
   const [desc, setDesc] = useState('')
@@ -68,4 +68,4 @@ function FomCreatePlaylist() {
   )
 }
 
-export default FomCreatePlaylist
+export default FormCreatePlaylist

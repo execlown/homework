@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 import NavbarComponent from '../component/NavbarComponent'
 import SearchBar from '../component/SearchBar'
 import TrackCard from '../component/TrackCard'
-import FormCreatePlaylist from '../component/FomCreatePlaylist'
+import FormCreatePlaylist from '../component/FormCreatePlaylist'
 
 function CreatePlaylist() {
   const [isSearched, setIsSearched] = useState(false)
@@ -16,7 +16,7 @@ function CreatePlaylist() {
       <NavbarComponent />
       <div>
         <Container style={{ minHeight: '100vh' }}>
-          <h1 className='my-4 text-white'>Create New Playlist</h1>
+          <h1 className='my-4 text-white' >Create New Playlist</h1>
           <SearchBar setIsSearched={setIsSearched} />
           <Row xs={1} md={2} lg={4} className="g-4 mt-3">
             {isSearched ? tracks.length > 0 ? tracks.map((tr) => (
