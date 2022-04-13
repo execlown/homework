@@ -1,43 +1,49 @@
-import React from 'react'
-import { Button, Card, Col } from 'react-bootstrap'
-import { useDispatch, useSelector } from 'react-redux'
-import { tracksAction } from '../store/tracks-slice'
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { tracksAction } from '../store/tracks-slice';
+
+import styles from './TrackCard.module.css';
 
 function TrackCard({ track }) {
-    const { album, name, artists, uri } = track
-    const selectedTracks = useSelector((state) => state.tracks.selectedTracks)
-    const dispatch = useDispatch()
+  const { album, name, artists, uri } = track;
+  const selectedTracks = useSelector((state) => state.tracks.selectedTracks);
+  const dispatch = useDispatch();
 
-    const handleSelect = () => {
-        const selected = selectedTracks.find((turi) => turi === uri)
-        let newSelected
-        if (!selected) {
-            newSelected = [...selectedTracks, uri]
-        }
-        else {
-            newSelected = selectedTracks.filter((turi) => turi !== uri)
-        }
-        dispatch(tracksAction.setSelectedTracks(newSelected))
+  const handleSelect = () => {
+    const selected = selectedTracks.find((turi) => turi === uri);
+    let newSelected;
+    if (!selected) {
+      newSelected = [...selectedTracks, uri];
+    } else {
+      newSelected = selectedTracks.filter((turi) => turi !== uri);
     }
+    dispatch(tracksAction.setSelectedTracks(newSelected));
+  };
 
-    const isSelected = selectedTracks.find((turi) => turi === uri)
+  const isSelected = selectedTracks.find((turi) => turi === uri);
 
-    return (
-        <Col>
-            <Card className='text-center'>
-                <Card.Img variant="top" src={album.images[0].url} />
-                <Card.Body>
-                    <Card.Title>{name}</Card.Title>
-                    <Card.Text>
-                        {artists[0].name} - {album.name}
-                    </Card.Text>
-                </Card.Body>
-                <Card.Footer>
-                    <Button onClick={handleSelect} className="w-100 btn btn-success">{isSelected ? "Deselect" : "Select"}</Button>
-                </Card.Footer>
-            </Card>
-        </Col>
-    )
+  return (
+    <div className={styles.trackcard}>
+      <div className={styles.trackcard_header}>
+        <img src={album.images[0].url} alt={name} />
+      </div>
+      <div className={styles.trackcard_body}>
+        <h2>{name}</h2>
+        <h4>
+          {artists[0].name} - {album.name}
+        </h4>
+      </div>
+      <div className={styles.trackcard_footer}>
+        <button
+          type="button"
+          className={styles.trackcard_btn}
+          onClick={handleSelect}
+        >
+          {isSelected ? 'Deselect' : 'Select'}
+        </button>
+      </div>
+    </div>
+  );
 }
 
-export default TrackCard
+export default TrackCard;

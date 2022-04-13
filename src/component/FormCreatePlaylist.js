@@ -9,6 +9,7 @@ function FormCreatePlaylist() {
   const [title, setTitle] = useState('')
   const [desc, setDesc] = useState('')
   const [errMsg, setErrMsg] = useState('Please Type Something')
+  const [isLoading, setIsLoading] = useState(false);
 
   const user = useSelector((state) => state.user.user)
   const selectedTracks = useSelector((state) => state.tracks.selectedTracks)
@@ -23,6 +24,7 @@ function FormCreatePlaylist() {
     setValidated(true)
 
     if(!errMsg){
+      setIsLoading(true);
       const playlistData = {
         title:title,
         description:desc
@@ -34,6 +36,7 @@ function FormCreatePlaylist() {
       dispatch(tracksAction.setSelectedTracks([]))
       setTitle('')
       setDesc('')
+      setIsLoading(false);
       window.location = "/myplaylist"
     }
   }
@@ -62,7 +65,9 @@ function FormCreatePlaylist() {
         <Form.Control as="textarea" value={desc} onChange={e => setDesc(e.target.value)} style={{resize:'none', height:'10rem'}} />
       </Form.Group>
       <Form.Group className="text-center">
-        <Button type="submit" className="w-50 mt-3">Create Playlist</Button>
+        <Button type="submit" className="w-50 mt-3">
+        {isLoading ? 'Please Wait...' : 'Create Playlist'}
+        </Button>
       </Form.Group>
     </Form>
   )
