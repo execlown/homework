@@ -7,7 +7,7 @@ function Login() {
     <Container fluid className='bg-dark d-flex justify-content-center align-items-center' style={{ minHeight: '100vh' }}>
       <Button className='btn btn-success btn-lg' onClick={login}>Login to Spotify</Button>
     </Container>
-  )
+  );
 }
 
 export default Login

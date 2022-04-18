@@ -7,7 +7,7 @@ import Login from '../pages/Login'
 import MyPlaylist from '../pages/MyPlaylist'
 import NotFound from '../pages/NotFound'
 import RedirectPage from '../pages/RedirectPage'
-import { tracksAction } from '../store/tracks-slice'
+import { trackAction } from '../store/tracks-slice'
 import { userAction } from '../store/user-slice'
 import {getProfile, getUserPlaylist} from '../utils/api'
 
@@ -18,24 +18,24 @@ const AppRouter = () => {
   const getPlaylist = useCallback(
     async () => {
       const { data } = await getUserPlaylist()
-      dispatch(tracksAction.setUserPlaylist(data.items))      
-    },[dispatch])
+      dispatch(trackAction.setUserPlaylist(data));     
+    },[dispatch]);
   
   const getCurrentUser = useCallback(
     async () => {
       const { data } = await getProfile()
       dispatch(userAction.setUser(data))
-    },[dispatch])
+    },[dispatch]);
   
   useEffect(() => {
     const token = localStorage.getItem('token')
     dispatch(userAction.setToken(token))
     
     if(token) {
-      getCurrentUser()
-      getPlaylist()
+      getCurrentUser();
+      getPlaylist();
     }
-  }, [dispatch, getPlaylist, getCurrentUser])
+  }, [dispatch, getPlaylist, getCurrentUser]);
 
   return (
     <Router>

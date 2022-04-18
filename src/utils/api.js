@@ -28,14 +28,16 @@ const createResource = () => {
     return instance
 }
 
-export const trackSearch = (keyword) => {
-    const params = {
-        q: keyword,
-        limit: '10',
-        type: 'track'
-    }
-    return createResource().get('/search', { params })
-}
+export default createResource();
+
+// export const trackSearch = (keyword) => {
+//     const params = {
+//         q: keyword,
+//         limit: '10',
+//         type: 'track'
+//     }
+//     return createResource().get('/search', { params })
+// }
 
 export const getProfile = async () => {
     return createResource().get('/me')
