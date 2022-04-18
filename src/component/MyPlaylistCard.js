@@ -6,7 +6,7 @@ function MyPlaylistCard({ playlist }) {
   return (
     <Col>
       <Card>
-        <Card.Img variant="top" src={images.url} />
+        <Card.Img variant="top" src={images[0].url} />
         <Card.Body>
           <Card.Title>{name}</Card.Title>
           <Card.Text>
