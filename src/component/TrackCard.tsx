@@ -10,7 +10,7 @@ interface trackProps {
 
 const TrackCard: FC<trackProps> = ({ track }) => {
   const { album, name, artists, uri } = track;
-  const selectedTracks = useAppSelector((state) => state.track.selectedTracks);
+  const selectedTracks = useAppSelector((state) => state.tracks.selectedTracks);
   const dispatch = useAppDispatch();
 
   const handleSelect = () => {
@@ -29,15 +29,13 @@ const TrackCard: FC<trackProps> = ({ track }) => {
   return (
     <Col>
       <Card className="text-center h-100">
-        <Card.Img variant="top" src={album.images[0].url} />
+        <Card.Img data-testedid="song-pic" variant="top" src={album.images[0].url} />
         <Card.Body>
-          <Card.Title>{name}</Card.Title>
-          <Card.Text>
-            {artists[0].name} - {album.name}
-          </Card.Text>
+          <Card.Title data-testedid="song-title">{name}</Card.Title>
+          <Card.Text data-testedid="song-detail">{artists[0].name} - {album.name}</Card.Text>
         </Card.Body>
         <Card.Footer>
-          <Button onClick={handleSelect} className="w-100 btn btn-success">
+          <Button data-testedid="song-btn" onClick={handleSelect} className="w-100 btn btn-success">
             {isSelected ? 'Deselect' : 'Select'}
           </Button>
         </Card.Footer>
