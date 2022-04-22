@@ -9,7 +9,7 @@ interface trackProps {
 }
 
 const TrackCard: FC<trackProps> = ({ track }) => {
-  const { album, name, artists, uri } = track;
+  const { album , name, artists, uri } = track;
   const selectedTracks = useAppSelector((state) => state.tracks.selectedTracks);
   const dispatch = useAppDispatch();
 
