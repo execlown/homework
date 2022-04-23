@@ -7,12 +7,15 @@ import searchTracks from '../utils/searchTrackApi';
  interface searchProps {
     setIsSearched: Dispatch<SetStateAction<boolean>>;
   }
+
+  
   
   const SearchBar: FC<searchProps> = ({ setIsSearched }) => {
     const [validated, setValidated] = useState(false);
     const [keyword, setKeyword] = useState<string>('');
     const [isLoading, setIsLoading] = useState(false);
     const dispatch = useAppDispatch();
+    
   
     const handleSubmit: FormEventHandler<HTMLFormElement> = async (
       event: FormEvent<HTMLFormElement>

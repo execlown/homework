@@ -27,15 +27,15 @@ const TrackCard: FC<trackProps> = ({ track }) => {
   const isSelected = selectedTracks?.find((turi) => turi === uri);
 
   return (
-    <Col>
-      <Card className="text-center h-100">
-        <Card.Img data-testedid="song-pic" variant="top" src={album.images[0].url} />
+    <Col className="d-flex justify-content-around">
+      <Card className="d-flex text-center h-100">
+        <Card.Img className="d-flex " data-testedid="song-pic" variant="top" src={album.images[0].url} />
         <Card.Body>
           <Card.Title data-testedid="song-title">{name}</Card.Title>
           <Card.Text data-testedid="song-detail">{artists[0].name} - {album.name}</Card.Text>
         </Card.Body>
         <Card.Footer>
-          <Button data-testedid="song-btn" onClick={handleSelect} className="w-100 btn btn-success">
+          <Button data-testedid="song-btn" onClick={handleSelect} className=" btn btn-success d-inline-flex">
             {isSelected ? 'Deselect' : 'Select'}
           </Button>
         </Card.Footer>
